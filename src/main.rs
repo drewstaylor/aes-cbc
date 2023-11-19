@@ -2,7 +2,7 @@ use libaes::Cipher;
 use hex::{encode as hex_encode};
 
 #[derive(Debug)]
-pub struct Result {
+pub struct AesResult {
     encrypted: String,
     decrypted: String,
 }
@@ -21,7 +21,7 @@ fn main() {
     let decrypted = cipher.cbc_decrypt(iv, &encrypted[..]);
 
     // Results
-    let res = Result {
+    let res = AesResult {
         encrypted: hex_encode(&encrypted),
         decrypted: String::from_utf8(decrypted).expect("Bytes should be valid utf8"),
     };
